@@ -1,4 +1,4 @@
-package com.chenk.springbootstarter;
+package com.chenk.javaBean.springbootstarter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
