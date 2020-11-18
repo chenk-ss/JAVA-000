@@ -5,8 +5,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
-    <bean id="userDao" class="com.chenk.springbean1.UserDao"></bean>
-    <bean id="userService" class="com.chenk.springbean1.UserService">
-        <property name="userDao" ref="userDao"/>
-    </bean>
+    <context:component-scan base-package="com.chenk.springbean3"></context:component-scan>
 </beans>

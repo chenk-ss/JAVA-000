@@ -1,4 +1,4 @@
-import com.chenk.springbean2.UserService;
+import com.chenk.springbean1.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
