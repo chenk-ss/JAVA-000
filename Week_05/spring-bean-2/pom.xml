@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.chenk</groupId>
-    <artifactId>spring-bean-1</artifactId>
+    <artifactId>spring-bean-2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
