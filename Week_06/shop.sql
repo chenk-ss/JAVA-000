@@ -1,22 +1,23 @@
-###第六周作业：  
-一.基于电商交易场景（用户、商品、订单），设计一套简单的表结构  
-共设计了六张表：  
-1.用户表：
-```sql
-DROP TABLE IF EXISTS `tb_user`;
-CREATE TABLE `tb_user` (
-  `id` varchar(50) NOT NULL COMMENT 'ID',
-  `name` varchar(50) DEFAULT NULL COMMENT '用户名',
-  `password` varchar(50) DEFAULT NULL COMMENT '密码',
-  `phone` varchar(20) DEFAULT NULL COMMENT '联系方式',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
+/*
+Navicat MySQL Data Transfer
 
-2.收货地址表：  
-```sql
+Source Server         : mysql
+Source Server Version : 50647
+Source Host           : 127.0.0.1:3306
+Source Database       : shop
+
+Target Server Type    : MYSQL
+Target Server Version : 50647
+File Encoding         : 65001
+
+Date: 2020-11-25 22:10:34
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for tb_address
+-- ----------------------------
 DROP TABLE IF EXISTS `tb_address`;
 CREATE TABLE `tb_address` (
   `id` varchar(50) NOT NULL COMMENT 'ID',
@@ -29,25 +30,10 @@ CREATE TABLE `tb_address` (
   `is_default` double DEFAULT NULL COMMENT '默认地址',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
 
-3.商家表：  
-```sql
-DROP TABLE IF EXISTS `tb_seller`;
-CREATE TABLE `tb_seller` (
-  `id` varchar(50) NOT NULL COMMENT 'ID',
-  `user_id` varchar(50) DEFAULT NULL COMMENT '用户ID',
-  `name` varchar(255) DEFAULT NULL COMMENT '店名',
-  `type` varchar(255) DEFAULT NULL COMMENT '类型',
-  `describe` varchar(255) DEFAULT NULL COMMENT '描述',
-  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
-
-4.商品表：  
-```sql
+-- ----------------------------
+-- Table structure for tb_goods
+-- ----------------------------
 DROP TABLE IF EXISTS `tb_goods`;
 CREATE TABLE `tb_goods` (
   `id` varchar(50) NOT NULL COMMENT 'ID',
@@ -65,10 +51,10 @@ CREATE TABLE `tb_goods` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
 
-5.商品快照表：
-```sql
+-- ----------------------------
+-- Table structure for tb_goods_snapshot
+-- ----------------------------
 DROP TABLE IF EXISTS `tb_goods_snapshot`;
 CREATE TABLE `tb_goods_snapshot` (
   `id` varchar(50) NOT NULL COMMENT 'ID',
@@ -87,10 +73,10 @@ CREATE TABLE `tb_goods_snapshot` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
 
-6.订单表：  
-```sql
+-- ----------------------------
+-- Table structure for tb_order
+-- ----------------------------
 DROP TABLE IF EXISTS `tb_order`;
 CREATE TABLE `tb_order` (
   `id` varchar(50) NOT NULL COMMENT 'ID',
@@ -107,4 +93,32 @@ CREATE TABLE `tb_order` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-```
+
+-- ----------------------------
+-- Table structure for tb_seller
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_seller`;
+CREATE TABLE `tb_seller` (
+  `id` varchar(50) NOT NULL COMMENT 'ID',
+  `user_id` varchar(50) DEFAULT NULL COMMENT '用户ID',
+  `name` varchar(255) DEFAULT NULL COMMENT '店名',
+  `type` varchar(255) DEFAULT NULL COMMENT '类型',
+  `describe` varchar(255) DEFAULT NULL COMMENT '描述',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for tb_user
+-- ----------------------------
+DROP TABLE IF EXISTS `tb_user`;
+CREATE TABLE `tb_user` (
+  `id` varchar(50) NOT NULL COMMENT 'ID',
+  `name` varchar(50) DEFAULT NULL COMMENT '用户名',
+  `password` varchar(50) DEFAULT NULL COMMENT '密码',
+  `phone` varchar(20) DEFAULT NULL COMMENT '联系方式',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
