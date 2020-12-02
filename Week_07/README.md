@@ -1,6 +1,6 @@
-#WEEK07
+#WEEK07  
 ##一、按自己设计的表结构，插入 100 万订单模拟数据，测试不同方式的插入效率  
-
+  插入100万条数据，执行了48s，代码见InsertOrder中的Main2.java
 ##二、读写分离 - 动态切换数据源版本 1.0  
   创建两个数据库shop、shop_slave,用其中的tb_user模拟读写分离  
   使用AbstractRoutingDataSource和AOP实现读写分离、数据库自动切换，代码见abstractroutingdatasource目录  

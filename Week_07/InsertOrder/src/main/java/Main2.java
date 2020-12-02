@@ -39,14 +39,16 @@ public class Main2 {
         conn.setAutoCommit(false);// 开始时间
         Long begin = new Date().getTime();
         // SQL前缀
-        String prefix = "insert into tb_order(`id`, `user_id`, `seller_id`, `goods_snapshot_id`, `address_id`, `num`, `price_total`, `pay_type`, `pay_price`, `pay_url`,`create_time`,`update_time`) VALUES";
+        String prefix = "insert into tb_order(`id`) VALUES";
+//        String prefix = "insert into tb_order(`id`, `user_id`, `seller_id`, `goods_snapshot_id`, `address_id`, `num`, `price_total`, `pay_type`, `pay_price`, `pay_url`,`create_time`,`update_time`) VALUES";
         // 保存SQL后缀
         StringBuffer suffix = new StringBuffer();
         try {
             // 设置事务为非自动提交
             conn.setAutoCommit(false);
             // 比起st，pst会更好些
-            PreparedStatement pst = conn.prepareStatement("insert into tb_order values (?,?,?,?,?,?,?,?,?,?,?,?)");//准备执行语句
+            PreparedStatement pst = conn.prepareStatement("insert into tb_order values (?)");//准备执行语句
+//            PreparedStatement pst = conn.prepareStatement("insert into tb_order values (?,?,?,?,?,?,?,?,?,?,?,?)");//准备执行语句
             // 外层循环，总提交事务次数
             for (int i = 1; i <= 1; i++) {
                 suffix = new StringBuffer();
@@ -63,7 +65,8 @@ public class Main2 {
                     }
                     num = "DJ" + num;
                     // 构建SQL后缀
-                    suffix.append("('" + UUID.randomUUID().toString() + "','" + user_id + "','" + seller_id + "','" + goods_snapshot_id + "','" + address_id + "'," + nums + "," + price_total + ",'" + pay_type + "'," + pay_price + ",'" + pay_url + "','" + DF.format(new Date()) + "','" + DF.format(new Date())+ "'),");
+                    suffix.append("('" + UUID.randomUUID().toString() + "'),");
+//                    suffix.append("('" + UUID.randomUUID().toString() + "','" + user_id + "','" + seller_id + "','" + goods_snapshot_id + "','" + address_id + "'," + nums + "," + price_total + ",'" + pay_type + "'," + pay_price + ",'" + pay_url + "','" + DF.format(new Date()) + "','" + DF.format(new Date())+ "'),");
                 }
                 // 构建完整SQL
                 String sql = prefix + suffix.substring(0, suffix.length() - 1);
