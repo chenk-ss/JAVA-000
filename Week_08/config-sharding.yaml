@@ -1,0 +1,46 @@
+######################################################################################################
+#
+# If you want to connect to MySQL, you should manually copy MySQL driver to lib directory.
+#
+######################################################################################################
+
+schemaName: shop
+
+dataSourceCommon:
+  username: root
+  password: 123456
+  connectionTimeoutMilliseconds: 30000
+  idleTimeoutMilliseconds: 60000
+  maxLifetimeMilliseconds: 1800000
+  maxPoolSize: 50
+  minPoolSize: 1
+  maintenanceIntervalMilliseconds: 30000
+
+dataSources:
+  shop_00:
+    url: jdbc:mysql://127.0.0.1:3306/shop_00?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  shop_01:
+    url: jdbc:mysql://127.0.0.1:3307/shop_01?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+
+rules:
+  - !SHARDING
+    tables:
+      tb_order:
+        actualDataNodes: shop_0${0..1}.tb_order_${0..15}
+        tableStrategy:
+          standard:
+            shardingColumn: id
+            shardingAlgorithmName: tb_order_inline
+    defaultDatabaseStrategy:
+      standard:
+        shardingColumn: user_id
+        shardingAlgorithmName: database_inline
+    shardingAlgorithms:
+      database_inline:
+        type: INLINE
+        props:
+          algorithm-expression: shop_0${user_id % 2}
+      tb_order_inline:
+        type: INLINE
+        props:
+          algorithm-expression: tb_order_${id % 16}
